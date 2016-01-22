@@ -27,7 +27,7 @@
 					<td>${cliente.sobrenome}</td>
 					<td>${cliente.email}</td>
 					<td>
-					<a href="#editar">editar</a>
+					<a href="formAtualizarCliente?id=${cliente.id}&nome=${cliente.nome}&sobrenome=${cliente.sobrenome}&email=${cliente.email}">editar</a>
 					<a href="excluirCliente?id=${cliente.id}">excluir</a>
 					</td>
 				</tr>
