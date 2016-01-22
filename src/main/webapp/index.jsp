@@ -9,6 +9,6 @@
 </head>
 <body>
 	<h1>Welcome!</h1>
-	<c:import url="WEB-INF/views/cliente/form/formNovoCliente.jsp"></c:import>
+	<jsp:forward page="/listarClientes" />  
 </body>
 </html>
