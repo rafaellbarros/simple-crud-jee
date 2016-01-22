@@ -8,8 +8,9 @@ public class Cliente extends Pessoa {
 
 	}
 
-	public Cliente(String email) {
-		super();
+	public Cliente(String nome, String sobrenome, String email) {
+		this.nome = nome;
+		this.sobrenome = sobrenome;
 		this.email = email;
 	}
 
