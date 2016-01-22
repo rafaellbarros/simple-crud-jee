@@ -28,7 +28,7 @@
 					<td>${cliente.email}</td>
 					<td>
 					<a href="#editar">editar</a>
-					<a href="#excluir">excluir</a>
+					<a href="excluirCliente?id=${cliente.id}">excluir</a>
 					</td>
 				</tr>
 			</c:forEach>
