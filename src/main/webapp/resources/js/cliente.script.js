@@ -51,4 +51,35 @@ function success() {
 	document.getElementById('email').value = '';
 	redirectListarClientes();
 }
+/* fim */
 
+/* listar clientes action deletar */
+function pegaId(getId){
+	$("#confirmaDelecao").click(function(){
+		excluir(getId);
+		$('.modal').modal('hide');
+		
+	});
+}
+
+function excluir(id){
+	$.get("excluirCliente?id=" + id, deuCerto);
+}
+
+function deuCerto(dados){
+	successDelete();
+
+	$.ajax({
+		url : "listarClientes",
+		type : "GET",
+		dataType : "html",
+		success : function(dados) {	
+			window.setTimeout('location.reload()', 2000);
+		}
+	});
+}
+
+function successDelete(){
+	$("div.alert-danger").fadeIn(300).delay(2000).fadeOut(400);
+}
+/* fim */

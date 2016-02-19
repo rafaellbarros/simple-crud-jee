@@ -26,10 +26,10 @@
 <script src="resources/js/ie10-viewport-bug-workaround.js"></script>
 
 <!-- jQuery and Bootstrap JS -->
-<script type="text/javascript" src="resources/js/jquery.min.js" ></script>
+<script type="text/javascript" src="resources/js/jquery.min.js"></script>
 <script type="text/javascript" src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="webjars/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="resources/js/footable/footable.js" ></script>
+<script type="text/javascript" src="resources/js/footable/footable.js"></script>
+<script type="text/javascript" src="resources/js/cliente.script.js"></script>
 
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -63,15 +63,42 @@
 			<!--/.nav-collapse -->
 		</div>
 	</nav>
+	<div id="deletar-dado" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
 
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Confirme excluir</h4>
+				</div>
+
+				<div class="modal-body">
+					<p>Você está prestes a excluir um registro, esse procedimento é irreversível.</p>
+					<p>Você quer prosseguir?</p>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					<a id="confirmaDelecao" class="btn btn-danger btn-ok">Excluir</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ./modal -->
+	<div class="container">
+		<div id="#resultado" style="display: none" class="alert alert-danger text-center">
+			<span class="glyphicon glyphicon-remove"></span> Dados excluido com Sucesso!.
+		</div>
+	</div>
 	<div class="container table-responsive">
-		<h2 class="text-center">Clientes Cadastrados</h2><br />
+		<h2 class="text-center">Clientes Cadastrados</h2>
+		<br />
 		<table class="table toggle-circle-filled table-striped table-hover">
 			<thead>
 				<tr>
-					<th class="text-center col-md-2" data-toggle="true">Nome</th>
-					<th class="text-center col-md-2" data-hide="tablet, phone">Sobrenome</th>
-					<th class="text-center col-md-2" data-hide="phone">Email</th>
+					<th class="col-md-2" data-toggle="true">Nome</th>
+					<th class="text-center col-md-0" data-hide="tablet, phone">Sobrenome</th>
+					<th class="text-center col-md-4" data-hide="phone">Email</th>
 					<th class="text-center col-md-2">Ações</th>
 				</tr>
 			</thead>
@@ -79,18 +106,19 @@
 				<c:forEach var="cliente" items="${clientes}">
 					<tr>
 
-						<td class="text-center">${cliente.nome}</td>
+						<td class="">${cliente.nome}</td>
 						<td class="text-center">${cliente.sobrenome}</td>
 						<td class="text-center">${cliente.email}</td>
 						<td class="text-center"><a
 							href="formAtualizarCliente?id=${cliente.id}&nome=${cliente.nome}&sobrenome=${cliente.sobrenome}&email=${cliente.email}"
 							class="btn btn-info"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>editar</a> <a
-							href="excluirCliente?id=${cliente.id}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"
-								aria-hidden="true"></span>excluir</a></td>
+							href="#deletar-dado" role="button" onclick="pegaId(${cliente.id});" class="btn btn-danger" data-toggle="modal"
+							data-target="#deletar-dado" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>excluir</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
-		</table><!-- /.table -->
+		</table>
+		<!-- /.table -->
 	</div>
 	<!-- /.container -->
 	<footer class="footer navbar-fixed-bottom">
@@ -103,7 +131,7 @@
 	<!-- /.footer -->
 </body>
 <script type="text/javascript">
-	$(document).ready(function () {
+	$(document).ready(function() {
 		$("table").footable();
 	});
 </script>
