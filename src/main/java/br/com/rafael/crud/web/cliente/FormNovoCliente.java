@@ -1,4 +1,4 @@
-package br.com.rafael.crud.web;
+package br.com.rafael.crud.web.cliente;
 
 import java.io.IOException;
 
