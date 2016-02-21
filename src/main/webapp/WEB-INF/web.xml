@@ -8,4 +8,24 @@
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
+
+	<!-- define global error handler -->
+	<!-- definir manipulador de erro global -->
+	<error-page>
+		<location>/error</location>
+	</error-page>
+
+	<!-- define specific error code handler -->
+	<!-- definir manipulador de código de erro específico -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error</location>
+	</error-page>
+
+	<!-- define specific error exception handler -->
+	<!-- definir manipulador de exceção de erro específica -->
+	<error-page>
+		<exception-type>java.lang.UnsupportedOperationException</exception-type>
+		<location>/error</location>
+	</error-page>
 </web-app>
