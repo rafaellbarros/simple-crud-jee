@@ -13,17 +13,17 @@ Tecnologias usadas:
 * **BootstrapValidator v0.5.1**
 * **Footable**
 
-### Requisitos
+## Requisitos
 ```
 Java 1.7 ou > .
 Apache Maven 3.0 ou > .
 PostgresSQL 9.0 ou > .
 ```
-### Configuração do Banco de Dados
+## Configuração do Banco de Dados
 ```
 Edite o arquivo properties/config.xml
 ````
-### Executando localmente
+## Executando localmente
 ```sh
 $ git clone git@github.com:rafaellbarros/simple-crud-jee.git
 $ cd simple-crud-jee
@@ -32,7 +32,7 @@ $ mvn jetty:run
 ```
 Sua aplicação está rodando :on: [localhost:8080](http://localhost:8080/).
 
-### Abrir o projeto no Eclipse
+## Abrir o projeto no Eclipse
 ```sh
 $ mvn eclipse:eclipse
 ```
@@ -59,17 +59,17 @@ Technologies used:
 * **BootstrapValidator v0.5.1**
 * **Footable**
 
-### Requirements
+## Requirements
 ```
 Java 1.7 or > .
 Apache Maven 3.0 or > .
 PostgresSQL 9.0 or > .
 ```
-### Database configuration
+## Database configuration
 ```
 Edit the file properties/config.xml
 ````
-### Running locally
+## Running locally
 ```sh
 $ git clone git@github.com:rafaellbarros/simple-crud-jee.git
 $ cd simple-crud-jee
@@ -78,7 +78,7 @@ $ mvn jetty:run
 ```
 Your application is running :on: [localhost:8080](http://localhost:8080/).
 
-### Open the project in Eclipse
+## Open the project in Eclipse
 ```sh
 $ mvn eclipse:eclipse
 ```
