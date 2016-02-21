@@ -1,4 +1,4 @@
-/* ajax form cliente*/
+/* ajax form novoCliente*/
 $(document).ready(function() {
 	$("#formCliente").submit(function() {
 		var nome = $("#nome").val();
@@ -32,12 +32,17 @@ function redirectListarClientes() {
 
 		var urlTomcat = raiz + projeto;
 		var urlJetty = raiz;
+		var urlAtual = window.location.href;
 
 		if (window.location.href === urlTomcat + "/formNovoCliente") {
 			window.location = urlTomcat + action;
 		} else if (window.location.href === urlTomcat + "/novoCliente") {
 			window.location = urlTomcat + action;
 		} else if (window.location.href === urlJetty + "/formNovoCliente"){
+			window.location = urlJetty + action;
+		} else if (urlAtual.match(/simple-crud-jee/)){
+			window.location = urlTomcat + action;
+		} else if (urlAtual.match(/formAtualizarCliente/)){
 			window.location = urlJetty + action;
 		}
 	}, 3000);
@@ -83,3 +88,30 @@ function successDelete(){
 	$("div.alert-danger").fadeIn(300).delay(2000).fadeOut(400);
 }
 /* fim */
+/* ajax form atualizarCliente */
+$(document).ready(function() {
+	$("#formAtualizarCliente").submit(function() {
+		var id = $("#id").val();
+		var nome = $("#nome").val();
+		var sobrenome = $("#sobrenome").val();
+		var email = $("#email").val();
+			$.ajax({
+				url : "atualizarCliente",
+				type : "POST",
+				dataType : "html",
+				data : {
+					id	: id,
+					nome : nome,
+					sobrenome : sobrenome,
+					email : email
+				},
+				success : function(dados) {
+
+				},
+				statusCode : {
+					200 : success
+				}
+			});
+		return false;
+	});
+});

@@ -56,7 +56,7 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/"><button class="btn btn-info">
+					<li><a href="home"><button class="btn btn-info">
 								<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home
 							</button></a></li>
 					<li><a href="formNovoCliente"><button class="btn btn-success">
