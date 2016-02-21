@@ -5,19 +5,19 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionDB {
-
-	public static Connection getConnetion() throws SQLException {
-			
-
-			try {
-				Class.forName("org.postgresql.Driver");
-			} catch (ClassNotFoundException e) {
-				
-				throw new RuntimeException("O driver não foi carregado!");
-			}
-
+	
+	public static Connection getConnetion() {
+		Connection con = null;
+		try {
+			JdbcConnection jdbc = new JdbcConnection();
+			jdbc.getProps();
+			Class.forName(jdbc.getDriver());
+			con = DriverManager.getConnection(jdbc.getUrl() + "/" + jdbc.getDatabase(),
+					jdbc.getUser(), jdbc.getPasswd());
+		} catch (SQLException | ClassNotFoundException e) {
+			throw new RuntimeException(e.getMessage());
+		}
 		
-		Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/crud","root","root");
 		return con;
 	}
 }

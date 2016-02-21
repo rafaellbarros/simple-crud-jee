@@ -100,7 +100,7 @@
 					<classpathScope>test</classpathScope>
 					<executable>java</executable>
 					<arguments>
-						<argument>X</argument>
+						<argument>-X</argument>
 						<classpath />
 						<argument>br.com.rafael.crud.EmbedMe</argument>
 						<argument>8080</argument>
