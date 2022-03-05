@@ -8,44 +8,57 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jetty-version>9.2.9.v20150224</jetty-version>
+		<bootstrap.version>3.3.6</bootstrap.version>
+		<junit.version>4.11</junit.version>
+		<mysql-connector-java.version>5.1.44</mysql-connector-java.version>
+		<postgresql.version>9.4-1201-jdbc4</postgresql.version>
+		<javax.servlet-api.version>3.0.1</javax.servlet-api.version>
+		<standard.version>1.1.2</standard.version>
+		<jstl.version>1.2</jstl.version>
+		<maven-enforcer-plugin.version>1.1.1</maven-enforcer-plugin.version>
+		<maven-compiler-plugin.version>3.5</maven-compiler-plugin.version>
+		<exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
+		<maven-dependency-plugin.version>3.2.0</maven-dependency-plugin.version>
+		<lombok.version>1.18.22</lombok.version>
+		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
-			<version>3.3.6</version>
+			<version>${bootstrap.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.11</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 		    <groupId>mysql</groupId>
 		    <artifactId>mysql-connector-java</artifactId>
-		    <version>5.1.44</version>
+		    <version>${mysql-connector-java.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>9.4-1201-jdbc4</version>
+			<version>${postgresql.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
-			<version>3.0.1</version>
+			<version>${javax.servlet-api.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>taglibs</groupId>
 			<artifactId>standard</artifactId>
-			<version>1.1.2</version>
+			<version>${standard.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
-			<version>1.2</version>
+			<version>${jstl.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
@@ -59,22 +72,28 @@
 			<version>${jetty-version}</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.5</version>
+				<version>${maven-compiler-plugin.version}</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-enforcer-plugin</artifactId>
-				<version>1.1.1</version>
+				<version>${maven-enforcer-plugin.version}</version>
 				<executions>
 					<execution>
 						<id>enforce-java</id>
@@ -87,10 +106,10 @@
 									<version>[3.0.0,)</version>
 								</requireMavenVersion>
 								<requireJavaVersion>
-									<version>[1.7,)</version>
+									<version>[1.8,)</version>
 									<message>[ERROR] OLD JDK [${java.version}] in use.
 										Jetty
-										${jetty-version} requires JDK 1.7 or newer</message>
+										${jetty-version} requires JDK 1.8 or newer</message>
 								</requireJavaVersion>
 							</rules>
 						</configuration>
@@ -100,7 +119,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.4.0</version>
+				<version>${exec-maven-plugin.version}</version>
 				<configuration>
 					<classpathScope>test</classpathScope>
 					<executable>java</executable>
@@ -120,7 +139,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
-				<version>2.3</version>
+				<version>${maven-dependency-plugin.version}</version>
 				<executions>
 					<execution>
 						<phase>package</phase>

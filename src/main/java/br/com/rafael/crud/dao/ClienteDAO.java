@@ -8,19 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.rafael.crud.modelo.Cliente;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 public class ClienteDAO {
 
-	private Connection con;
-
-	public ClienteDAO(Connection con) {
-		this.con = con;
-
-	}
+	private final Connection con;
 
 	public void inserir(Cliente cliente) {
-		String sql = "INSERT INTO cliente (nome, sobrenome, email) VALUES (?, ?, ?)";
-
+		String sql = "INSERT INTO tb_cliente (nome, sobrenome, email) VALUES (?, ?, ?)";
 		try (PreparedStatement stmt = con.prepareStatement(sql)) {
 			stmt.setString(1, cliente.getNome());
 			stmt.setString(2, cliente.getSobrenome());
@@ -32,12 +28,11 @@ public class ClienteDAO {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-
 	}
 
 	public List<Cliente> listar() throws SQLException {
 		List<Cliente> clientes = new ArrayList<>();
-		String sql = "SELECT * FROM cliente";
+		String sql = "SELECT * FROM tb_cliente";
 		try (PreparedStatement stmt = con.prepareStatement(sql)) {
 			stmt.execute();
 			try (ResultSet rs = stmt.getResultSet()) {
@@ -60,7 +55,7 @@ public class ClienteDAO {
 	}
 
 	public void atualizar(Cliente cliente) throws SQLException {
-		String sql = "UPDATE cliente SET nome = ?, sobrenome = ?, email = ? WHERE id = ?";
+		String sql = "UPDATE tb_cliente SET nome = ?, sobrenome = ?, email = ? WHERE id = ?";
 		try (PreparedStatement stmt = con.prepareStatement(sql)) {
 			stmt.setString(1, cliente.getNome());
 			stmt.setString(2, cliente.getSobrenome());
@@ -78,7 +73,7 @@ public class ClienteDAO {
 			throw new IllegalStateException("Id da conta nao deve ser nula.");
 		}
 
-		String sql = "DELETE FROM cliente WHERE id = ?";
+		String sql = "DELETE FROM tb_cliente WHERE id = ?";
 		try (PreparedStatement stmt = con.prepareStatement(sql)) {
 			stmt.setLong(1, id);
 			stmt.execute();
@@ -86,7 +81,5 @@ public class ClienteDAO {
 			this.con.close();
 			System.out.println("Excluido com sucesso!");
 		}
-
 	}
-
 }
